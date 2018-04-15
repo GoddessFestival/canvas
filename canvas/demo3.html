@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用路径-直线</title>
+</head>
+<body onload='draw1("canvas")'>
+
+	<canvas id='canvas' width='400' height='300'></canvas>
+
+<script>
+
+function draw(id){
+  var canvas=document.getElementById(id);
+  if(canvas==null){return false};
+
+  var context = canvas.getContext('2d');
+
+  context.fillStyle = '#eeeeff';
+  context.fillRect(0,0,400,300);
+
+
+  context.beginPath();
+
+  context.moveTo(10,10);
+  context.lineTo(200,200);
+  context.lineTo(200,10);
+  // context.lineTo(10,200);
+  context.closePath();
+
+
+  context.lineWidth=2;
+  context.fillStyle='red';
+  context.strokeStyle='blue';
+
+  context.fill();
+  context.stroke();
+
+}
+	
+
+
+//绘制直线路径
+// context.moveTo(x,y)  指定起点坐标
+// context.lineTo(x,y)  线段的终点坐标（绘制直线）   光标移动到此坐标，并作为下一个lineTo()的起点坐标
+//context.closePath()  路径自动闭合
+
+
+/*
+*绘制复杂图形
+*/
+
+
+function draw1(id){
+  var canvas = document.getElementById(id);
+  if(canvas==null){return false};
+
+  var context = canvas.getContext('2d');
+  context.fillStyle='#EEEEFF';
+  context.fillRect(0,0,400,300);
+
+
+
+  var n=0;
+  var dx=150;
+  var dy=150;
+  var s=100;
+
+  context.beginPath();
+  context.fillStyle='rgb(100,255,100)';
+  context.strokeStyle='rgb(0,0,100)';
+
+  var x=Math.sin(0); //0
+  var y=Math.cos(0); //1
+  var dig=Math.PI/15*11;
+  for(var i=0;i<30;i++){
+    var x=Math.sin(i*dig);
+    var y= Math.cos(i*dig);
+    context.lineTo(dx+x*s,dy+y*s);
+  }
+
+
+  context.closePath();
+  // context.fill();
+  context.stroke();
+
+}
+
+
+//角度数 x Math.PI/180   当前角度数的弧度值  
+// 180度转换成弧度理论上等于Math.PI   js近似处理
+// 浮点数的运算每次取近似值，而不是代数得出的结果
+
+
+
+// 贝济埃曲线
+  // context.bezierCurveTO(cp1x,cp1y,cp2x,cp2y,x,y)  两个控制点和终点坐标
+// 二次样条曲线
+  // context.quadraticCurveTo(cp1x,cp2y,x,y)  一个控制点和终点坐标
+
+</script>
+	
+</body>
+</html>

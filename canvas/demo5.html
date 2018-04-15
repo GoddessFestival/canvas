@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变形图形</title>
+</head>
+<body onload='draw("canvas")'>
+
+  <canvas id='canvas' width='400' height='300'></canvas>
+
+  <script>
+  
+  function draw(id){
+    var canvas=document.getElementById(id);
+    if(canvas==null){return false};
+
+    var context = canvas.getContext('2d');
+    context.fillStyle = '#EEEEFF';
+    context.fillRect(0,0,400,300);
+
+    //图形绘制
+    context.translate(200,50);
+    context.fillStyle = 'rgba(255,0,0,0.25)';
+    for(var i=0;i<50;i++)
+    {
+      context.translate(25,25); //向左移动单位，向右移动单位
+      context.scale(0.95,0.95);
+      context.rotate(Math.PI/10);
+      context.fillRect(0,0,100,50);
+    }
+
+  }
+
+// 以坐标单位为基准来进行图形绘制
+// 画布的最左上角对应于坐标轴原点(0,0);
+// 一个像素为一个坐标单位;
+
+//变形图形方法
+ // 1.平移
+ //  context.translate(x,y) 向左移动，向下移动
+
+ // 2.扩大
+ //  context.scale(x,y) 水平方向放大，垂直方向放大倍数
+
+ // 3.旋转
+ //  context.rotate(angle) 旋转的中心点是坐标原点，正数顺时针
+
+  </script>
+
+	
+</body>
+</html>

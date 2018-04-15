@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用路径——绘制圆形</title>
+</head>
+<body onload='draw("canvas")'>
+
+
+<canvas id='canvas' width='400' height='300'></canvas>
+
+<script>
+function draw(id){
+  var canvas = document.getElementById(id);
+  if(canvas == null){return false};
+
+  var context = canvas.getContext('2d');
+
+  context.fillStyle = '#eeeeff';
+  context.fillRect(0,0,400,300);
+
+  var n=0;
+  for(var i=0;i<10;i++){
+  	context.beginPath();
+  	context.arc(i*25,i*25,i*10,0,Math.PI*2,true);
+  	context.closePath();
+  	context.fillStyle='rgba(255,0,0,0.25)';
+  	// context.strokeStyle='rgba(255,0,0,0.25)'
+    context.fill();
+  	// context.stroke();
+  }
+
+
+}
+
+
+//绘制圆形  路径-填充
+// 1.开始创建路径
+//   context.beginPath()
+// 2.创建圆形的路径   
+//   context.arc(x,y,radius,startAngle,endAngle,anticlockwise) 起点坐标  半径  绘制角度  顺时针boolean
+// 3.关闭路径
+//   context.closePath()
+// 4.设定绘制样式，进行图形绘制
+//   context.fillStyle='rgba(255,0,0,0.25)';
+//   context.fill(); context.stroke();
+
+// 首先使用路径来勾勒图形轮廓，然后设置颜色，进行绘制。   大小有路径决定
+</script>
+</body>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                               

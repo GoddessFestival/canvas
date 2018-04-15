@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制矩形</title>
+</head>
+<body onload='draw("canvas")'>
+
+
+<canvas id='canvas'  width='400' height='300'></canvas>
+
+
+<script>
+function draw(id){
+  var canvas = document.getElementById(id);
+   if(canvas == null) {return false}
+
+   	var context = canvas.getContext('2d');
+
+
+  // 设置画布背景色
+   context.fillStyle = '#eeeeff';
+   context.fillRect(0,0,400,300);
+
+
+   // 设置按钮颜色 边框 边框线样式
+   context.fillStyle = 'red';
+   context.strokeStyle = 'blue';
+   context.lineWidth = 10;
+   context.fillRect(50,50,100,100);
+   context.strokeRect(50,50,100,100);
+
+}
+
+
+// canvas步骤：
+// 1.取得canvas元素
+// 2.取得上下文  context
+//   canvas.getContext("2d")  是一个封装了很多绘图功能的对象
+// 3.填充与绘制边框 fill  stroke
+// 4.设置绘图样式style
+//   fillStyle    strokeStyle   填入颜色值
+// 5.指定线宽  lineWidth
+// 6.指定颜色值
+//   fillStyle  strokeStyle  颜色名 十六进制  rgb()或rgba()函数
+// 7.绘制矩形
+//   context.fillRect()     context.strokeRect()
+
+
+// 擦除指定区域的图形
+   // context.clearRect()   指定区域中的颜色变为透明
+</script>
+</body>
+</html>
