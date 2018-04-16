@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图形组合</title>
+</head>
+<body onload='draw("canvas")'>
+
+  <canvas id='canvas' width='400' height='300'></canvas>
+
+  <script>
+  	
+  function draw(id){
+    var canvas=document.getElementById(id);
+    if(canvas==null){return false};   
+    var context=canvas.getContext('2d');
+
+    var oprtns = new Array(
+      'source-atop', //重叠的部分(新图形)+原有图形
+      'source-in',//重叠的部分（新图形）
+      'source-out',//不重叠
+      'source-over', //默认值 新图形覆盖到原有图形
+      'destination-atop', //重叠部分(原有图形)+新图形的其他部分
+      'destination-in',//重叠的部分（原图形）
+      'destination-out',//不重叠
+      'destination-over',
+      'lighter',//均绘制，重叠部分加色处理
+      'copy',//只绘制新图形，原有图形（未重叠部分）变成透明色
+      'xor' //绘制不重叠的部分
+    );
+
+    i=10; //修改参数 查看组合效果
+    //绘制原有图形（蓝色长方形)
+    context.fillStyle='blue';
+    context.fillRect(10,10,60,60);
+
+    /*设置组合方式，*/
+    context.globalCompositeOperation = oprtns[i];
+
+    //设置新图形（红色圆形）
+    context.beginPath();
+    context.fillStyle='red';
+    context.arc(60,60,30,0,Math.PI*2,false);
+    context.fill();
+  }
+ 
+
+//图形组合方式  混合计算
+ //context.globalCompositeOperation = type
+
+  </script>
+	
+</body>
+</html>
